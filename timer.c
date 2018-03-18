@@ -33,13 +33,13 @@ int getTime() {
 
 	//seconds = difftime(now,mktime(&newyear));
 	seconds = 0;
-	sleep(1);
+	sleep(60);
 	if (seconds  == 0) {
 
 		int lockedValue = lock();
 
 
-		char backup[100] = "/home/davie/Documents/SS1V2/Backup/www/";
+		char backup[100] = "/home/davie/Documents/SS1V2/Backup/";
 		char toBackUp[100] = "/home/davie/Documents/SS1V2/Intranet/www";
 		char str_timestamp[80];
 

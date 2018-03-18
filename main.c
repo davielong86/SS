@@ -24,8 +24,6 @@ int main(){
         int pid2 = fork();
         int ppid;
         int ppid2;
-        
-        
         FILE *pFile;
         char buffer[256];
         ppid = getpid();
@@ -35,9 +33,10 @@ int main(){
             printf("Starting Process\nCreating Parent and Child \n");
             // if PID > 0 :: this is the parent
             // this process performs printf and finishes
-            sleep(5);  // uncomment to wait 10 seconds before process ends
+            sleep(15);  // uncomment to wait 15 seconds before process ends
             exit(EXIT_SUCCESS);
-        } else if (pid == 0) {
+        } 
+        else if (pid == 0) {
             // Step 1: Create the orphan process
             printf("Child process is now an orphan process\n");
 
@@ -48,7 +47,8 @@ int main(){
             int pid = fork();
             if (pid > 0) {
                 exit(EXIT_SUCCESS);
-            } else {
+            } 
+            else {
                 printf("Daemon process created and running\n");
                 // Step 3: call umask() to set the file mode creation mask to 0
                 // This will allow the daemon to read and write files 
@@ -58,7 +58,10 @@ int main(){
                 // Step 4: Change the current working dir to root.
                 // This will eliminate any issues of running on a mounted drive, 
                 // that potentially could be removed etc..
-                if (chdir("/") < 0 ) { exit(EXIT_FAILURE); }
+                if (chdir("/") < 0 ) { 
+                    printf("failed");
+                    exit(EXIT_FAILURE); 
+                }
 
                 // Step 5: Close all open file descriptors
                 /* Close all open file descriptors */
@@ -67,19 +70,20 @@ int main(){
                 {
                     close (x);
                 } 
-
-                while(1) {  
+                //while(1) {  
+                    printf("while started");
                     int value = getTime();
-
-                    if (pid > 0) {
+               // }
+                if (pid > 0) {
                         printf("pid id > 0");
-                        sleep(15);
+                        sleep(1);
                         exit(EXIT_SUCCESS);
-                    } else if (pid == 0){
+                    } 
+                else if (pid == 0){
                         find_updated();
                     }
-                }
             }
+            
         }
     return 0;
 }
