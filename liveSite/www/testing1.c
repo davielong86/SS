@@ -135,7 +135,7 @@ void update() {
 
   time(&now);
   seconds = difftime(now,mktime(&newyear));
-  //if (seconds  == 0) {
+  if (seconds  == 0) {
 
     files = files - 1;
     printf("(1)Files is: %d\n", files);

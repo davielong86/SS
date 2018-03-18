@@ -21,19 +21,18 @@ int getTime() {
 	int argc;
 	char **argv;
 	sleep(1);
-	int value = 1;
+	int val = 1;
 	time_t now;
 	struct tm newyear;
 	double seconds;
 	newyear = *localtime(&now);
-	newyear.tm_hour = 13;
-	newyear.tm_min = 42; 
+	newyear.tm_hour = 0;
+	newyear.tm_min = 5; 
 	newyear.tm_sec = 0;
 	time(&now);  /* get current time; same as: now = time(NULL)  */
 
-	//seconds = difftime(now,mktime(&newyear));
+	seconds = difftime(now,mktime(&newyear));
 	seconds = 0;
-	sleep(60);
 	if (seconds  == 0) {
 
 		int lockedValue = lock();
@@ -66,5 +65,5 @@ int getTime() {
 			logFile("Unlock", "Failure");
 		}
 	}
-	return value;
+	return val;
 }

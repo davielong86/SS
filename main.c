@@ -33,7 +33,7 @@ int main(){
             printf("Starting Process\nCreating Parent and Child \n");
             // if PID > 0 :: this is the parent
             // this process performs printf and finishes
-            sleep(15);  // uncomment to wait 15 seconds before process ends
+            //sleep(15);  // uncomment to wait 15 seconds before process ends
             exit(EXIT_SUCCESS);
         } 
         else if (pid == 0) {
@@ -70,18 +70,13 @@ int main(){
                 {
                     close (x);
                 } 
-                //while(1) {  
-                    printf("while started");
-                    int value = getTime();
-               // }
-                if (pid > 0) {
-                        printf("pid id > 0");
-                        sleep(1);
-                        exit(EXIT_SUCCESS);
-                    } 
-                else if (pid == 0){
+                while(1){
+                    int val = getTime();
+                    if (val == 1){
+                        syncSite();
                         find_updated();
                     }
+                }
             }
             
         }

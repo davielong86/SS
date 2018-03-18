@@ -14,7 +14,7 @@ int found_word = 0;
 
 int find_updated() {
   char data[4096];
-  FILE *f = fopen("updated.txt", "w");
+  FILE *f = fopen("/home/davie/Documents/SS1V2/updated.txt", "w");
 
   // Create pipe between find and awk
   pipe(pipefd1);
@@ -29,7 +29,7 @@ int find_updated() {
     close(pipefd1[0]);
     close(pipefd1[1]);
 
-    execlp("find", "find", "/home/davie/Documents/SS1V2/Intranet/", "-mtime", "-1", "-ls",  NULL);
+    execlp("find", "find", "/home/davie/Documents/SS1V2/", "-mtime", "-1", "-ls",  NULL);
 
     _exit(1);
   }
